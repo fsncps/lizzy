@@ -1,0 +1,99 @@
+
+
+.Panes {
+   background: #141523;
+   color: #efe6da;
+   border: heavy #7e3417;
+}
+.TextFields {
+   background: #141523;
+   color: #e6ab70;
+   height:100%;
+}
+.TextFields:focus {
+   background: #141523;
+   color: #e6ab70;
+   height:100% ;
+   border: blank;
+}
+#input-pane{
+   height: 6vh;
+}
+
+#words-input {
+   height: 6vh;
+   width: 1fr;
+   align: center middle;
+   text-align: center;
+   border: blank;
+   background: #141523;
+}
+#words-input:focus {
+   border: thick #7e3417;
+   background: #030314;
+   color: #e18d27;
+}
+
+#current-word{
+   background: #456070;
+   width: 1fr;
+   text-align: center;
+   align: center middle;
+}
+#current-word MarkdownParagraph{
+   color: #e5bc53;
+   border: ascii #400000;
+   text-style: bold;
+   height: 6vh;
+   text-align: center;
+   width: 50%;
+}
+
+.option-list--option-highlighted{
+   background: #e18d27;
+   color: #04041d;
+}
+
+MarkdownH3 {
+   color: #e6ab70;
+   width: 100%;
+   border: tall #7e3417;
+   text-style: bold;
+   padding: 0 1 0 1;
+   background: #04041d;
+}
+
+MarkdownBullet {
+   color: #e18d27;
+}
+
+#words-tree {
+   height: 40vh;
+}
+#tree-pane {
+   height: 40vh;
+}
+
+#eb-list {
+   height: 40vh;
+}
+#eb-pane {
+   height: 40vh;
+}
+
+
+
+#output-pane {
+}
+
+#dict-pane {
+   height: 50vh;
+   overflow: auto;
+}
+
+
+#right-panel {
+   width: 65vw;
+}
+
+
