@@ -57,6 +57,3 @@ pip install -r requirements.txt
 ## Roadmap
 - [ ] Additional API integrations
 - [ ] Inegration with Clio memory palace
-
-## License
-MIT License. See `LICENSE` for details.
