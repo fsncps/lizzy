@@ -56,15 +56,15 @@ pip install -r requirements.txt
 
 ## Roadmap
 - [ ] Additional API integrations
-- [ ] Inegration with Clio memory palace
-<<<<<<< HEAD
-
-## License
-MIT License. See `LICENSE` for details.
+- [ ] Create a fully-version Encyclopedia Britannica DB from a public domain version with embeddings for cosine similarity matching of terminology rather than text search
+- [ ] If there is any demand, a web interface, altohugh I much prefer the TUI.
+- [ ] Inegration with Clio memory palace (TBA)
 
 ## Screenshots
 ![Description](docs/screenshot1.png)
+
 ![Description](docs/screenshot2.png)
+
 ![Description](docs/screenshot3.png)
-=======
->>>>>>> ce49659dee28e7ee651d82333368de89f5a4daf0
+
+
