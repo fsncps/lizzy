@@ -60,3 +60,8 @@ pip install -r requirements.txt
 
 ## License
 MIT License. See `LICENSE` for details.
+
+## Screenshots
+![Description](docs/screenshot1.png)
+![Description](docs/screenshot2.png)
+![Description](docs/screenshot3.png)
