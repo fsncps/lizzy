@@ -1,6 +1,6 @@
 # Lizzy
 
-Lizzy is a dynamic word browser, thesaurus and dictionary explorer that integrates data from WordsAPI, Merriam-Webster and Encyclopedia Britannica.
+Lizzy is a dynamic word browser, thesaurus and dictionary explorer that integrates data from various dictionary and encylopaedic sources -- names after St. Elizabeth's Government Hospital for the Insane, where W. C. Minor resided during most of the composition of the OED (in memoriam).
 
 ## Features
 
@@ -57,6 +57,7 @@ pip install -r requirements.txt
 ## Roadmap
 - [ ] Additional API integrations
 - [ ] Inegration with Clio memory palace
+<<<<<<< HEAD
 
 ## License
 MIT License. See `LICENSE` for details.
@@ -65,3 +66,5 @@ MIT License. See `LICENSE` for details.
 ![Description](docs/screenshot1.png)
 ![Description](docs/screenshot2.png)
 ![Description](docs/screenshot3.png)
+=======
+>>>>>>> ce49659dee28e7ee651d82333368de89f5a4daf0
