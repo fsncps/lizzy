@@ -39,7 +39,7 @@ class DashboardScreen(Screen):
             ARTICLES_FILE = Path(__file__).resolve().parent.parent / "var" / "articles.json"
 
             with open(ARTICLES_FILE, "r") as f:
-                articles = json.load(f)  # ✅ Correct JSON reading
+                articles = json.load(f)  # <LeftMouse>󰸞 Correct JSON reading
 
             # Debug: Print first 5 articles
             print(f"✅ Loaded {len(articles)} articles from JSON.")
@@ -108,16 +108,17 @@ class DashboardScreen(Screen):
 
     async def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
         """Handles selection of an EB article from the list."""
-        selected = event.option.prompt.strip()  # ✅ Extract text properly
-        
-        if selected.startswith("ID: "):
-            article_id = selected.split(" - ")[0].replace("ID: ", "").strip()
+        selected_option = event.option_list.get_option_at_index(event.option_index)  # ✅ Get selected option
+        selected_text = selected_option.prompt.strip()  # ✅ Extract text properly
+
+        if selected_text.startswith("ID: "):
+            article_id = selected_text.split(" - ")[0].replace("ID: ", "").strip()
             self.append_output(f"📖 Fetching Britannica article: {article_id}")
-            
-            # Fetch article content
+
+            # ✅ Fetch article content
             eb_content = await self.get_eb_article(article_id)
-            
-            # Display in Markdown container
+
+            # ✅ Display in Markdown container (Only updates `#EB-md`)
             self.update_eb_display(eb_content)
         else:
             self.append_output("⚠️ Invalid selection in EB list.")
@@ -492,36 +493,48 @@ class DashboardScreen(Screen):
         # Update the words input field
         # words_input = self.query_one("#words-input", Input)
         # words_input.value = selected_text  # Set the input box value
-        # words_input.refresh()  # Ensure the UI updates
-
+                # words_input.refresh()  # Ensure the UI updates
     async def on_key(self, event: Key) -> None:
         """Handle Enter for submission, but let Textual handle Space for expansion."""
         key = event.key.lower()
+
+        # **1️⃣ Handle Enter on Words Tree (Dictionary, Tree, EB List)**
         tree = self.query_one("#words-tree", Tree)
-        selected_node = tree.cursor_node  # Get the currently selected node
+        if tree.has_focus:
+            selected_node = tree.cursor_node  # Get the currently selected node
 
-        if not selected_node or not selected_node.label:
-            self.append_output("⚠️ No valid selection.")
-            return  # Ignore keypress if nothing is selected
+            if not selected_node or not selected_node.label:
+                self.append_output("⚠️ No valid selection.")
+                return  # Ignore keypress if nothing is selected
 
-        selected_text = str(selected_node.label).strip()  # Ensure it's a string
+            selected_text = str(selected_node.label).strip()
 
-        if key == "enter":
-            self.selected_word = selected_text
-            self.append_output(f"🔍 Submitting: {self.selected_word}")
+            if key == "enter":
+                self.selected_word = selected_text
+                self.append_output(f"🔍 Searching: {self.selected_word}")
 
-            # Check if it's a Britannica article ID
-            if self.selected_word.startswith("ID: "):
-                article_id = self.selected_word.replace("ID: ", "").strip()
-                self.append_output(f"📖 Fetching Britannica article: {article_id}")
-                eb_content = await self.get_eb_article(article_id)
-                self.update_eb_display(eb_content)
-
-            else:
-                # **Only refresh dictionary & tree when selecting a word, NOT an EB article**
-                self.append_output(f"🔄 Restarting search for: {self.selected_word}")
+                # ✅ Refresh dictionary & tree (MW & WordsAPI)
                 await self.query_wordsapi(self.selected_word)
                 await self.query_dictionary(self.selected_word)
 
-                # 📡 **Trigger Britannica search & update OptionList**
+                # ✅ Also update Britannica article list (`#eb-list`)
                 self.search_britannica_titles(self.selected_word)
+
+                # ❌ DO NOT update Britannica entry (`#EB-md` stays unchanged)
+                return
+
+        # **2️⃣ Handle Enter on Britannica List (Only Updates `#EB-md`)**
+        eb_list = self.query_one("#eb-list", OptionList)
+        if eb_list.has_focus and key == "enter":
+            selected_index = eb_list.highlighted  # ✅ Get the highlighted index
+
+            if selected_index is None or selected_index < 0:
+                self.append_output("⚠️ No valid selection in EB List.")
+                return
+
+            selected_option = eb_list.get_option_at_index(selected_index)  # ✅ Get the Option object
+
+            # ✅ Call `on_option_list_option_selected()` directly
+            await self.on_option_list_option_selected(OptionList.OptionSelected(option_list=eb_list, index=selected_index))
+            return
+

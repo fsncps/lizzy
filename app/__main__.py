@@ -2,7 +2,7 @@ from textual.app import App
 from .screen.scr_dashboard import DashboardScreen
 
 
-class ChesterApp(App):
+class LizzyDict(App):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -15,5 +15,5 @@ class ChesterApp(App):
 
 
 if __name__ == "__main__":
-    app = ChesterApp()
+    app = LizzyDict()
     app.run()
