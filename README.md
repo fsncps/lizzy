@@ -56,7 +56,8 @@ pip install -r requirements.txt
 
 ## Roadmap
 - [ ] Additional API integrations
-- [ ] Create a fully-version Encyclopedia Britannica DB from a public domain version with embeddings for cosine similarity matching of terminology rather than text search
+- [ ] Create a full-version Encyclopedia Britannica DB from a public domain version with embeddings for cosine similarity matching of terminology rather than text search (from Britannica.com you only get stubs)
+- [ ] Utterly utopic at this point, but maybe set up some kind of OED account sharing, if the allow it. OED is by far the best English dictionary, but they want $50/month for the API. I'd be willing to pay $5. 
 - [ ] If there is any demand, a web interface, altohugh I much prefer the TUI.
 - [ ] Inegration with Clio memory palace (TBA)
 
