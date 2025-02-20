@@ -1,6 +1,6 @@
 # Lizzy
 
-Lizzy is a dynamic word browser, thesaurus and dictionary explorer that integrates data from various dictionary and encylopaedic sources -- named after St. Elizabeth's Government Hospital for the Insane, where W. C. Minor resided during most of the composition of the OED (in memoriam).
+A dynamic word browser, thesaurus and dictionary explorer that integrates data from various dictionary and encylopaedic sources. Lizzy is named after St. Elizabeth's Government Hospital for the Insane, where W. C. Minor resided during most of the composition of the OED (in memoriam).
 
 ## Features
 
